@@ -1,0 +1,51 @@
+﻿.card-container{
+    text-align:center;
+}
+
+.card {
+    width: 100%;
+    max-width: 600px;
+    display: inline-flex;
+    border: 3px solid black;
+    margin-bottom: 10px;
+    background-color: $color-light-1;
+    border-radius: 5px;
+
+    &--disabled {
+        @extend .card;
+        background-color: #ebebeb;
+    }
+
+    &--secondary {
+        @extend .card;
+        background-color: $color-light-2;
+    }
+
+    &--tertiary {
+        @extend .card;
+        background-color: $color-light-3;
+    }
+}
+
+.card-thin {
+    border: 2px solid black;
+    margin-bottom: 5px;
+}
+
+.card__block {
+    flex: 1;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+    color: black;
+
+    &--white {
+        @extend .card__block;
+        background-color: white;
+        border: 5px double black;
+    }
+}
+
+.card__block-thin {
+    border: 2px double black;
+    margin: 5px 5px 5px 5px;
+}

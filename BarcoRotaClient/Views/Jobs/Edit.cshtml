@@ -1,0 +1,59 @@
+﻿@model BarcoRota.Models.BarcoJob
+
+@{
+    ViewData["Title"] = "Edit Activity";
+}
+
+<div class="header">
+    <div class="header__block">
+        Edit Activity
+    </div>
+    <div class="header__block--right">
+        <a asp-action="Index" class="icon__frame">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+        </a>
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="StartDateTime" class="control-label"></label>
+                <input asp-for="StartDateTime" class="form-control" type="datetime"/>
+                <span asp-validation-for="StartDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDateTime" class="control-label"></label>
+                <input asp-for="EndDateTime" class="form-control" type="datetime"/>
+                <span asp-validation-for="EndDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobType" class="control-label"></label>
+                <select asp-for="JobType" asp-items="Html.GetEnumSelectList<BarcoRota.Models.JobType>()" class="form-control"></select>
+                <span asp-validation-for="JobType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobCapacity" class="control-label"></label>
+                <select asp-for="JobCapacity" class="form-control">
+                    <option>1</option>
+                    <option selected>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <span asp-validation-for="JobCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

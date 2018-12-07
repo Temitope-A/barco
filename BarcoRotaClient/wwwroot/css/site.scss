@@ -1,0 +1,93 @@
+﻿$primary-color: #F2973D;
+$color-dark-1: #708C72;
+$color-dark-2: #A74C3A;
+$color-light-1: #FAFCFB;
+$color-light-2: #B5CCAD;
+$color-light-3: #FBD9D3;
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header{
+    display: flex;
+    padding: 10px;
+    height: 75px;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.header__block {
+    flex: auto;
+    font-size:35px;
+    vertical-align:middle;
+
+    &--right {
+        @extend .header__block;
+        text-align: right;
+    }
+}
+
+.vertical-box {
+    display:flex;
+    flex-direction: column;
+
+    div{flex:1;}
+}
+
+.vertical-box--center {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.div-link {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        @extend .div-link;
+        background-color: $primary-color;
+    }
+}
+
+.icon__frame {
+    background-color: $color-light-2;
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 0px 5px 10px 5px;
+    text-align: center;
+    text-decoration: none;
+    padding: 7px;
+    color: inherit;
+
+    &:hover {
+        @extend .icon__frame;
+        background-color: $primary-color;
+    }
+
+    .glyphicon {
+        width: 70px;
+    }
+}
+
+@import "cards/cards.scss";

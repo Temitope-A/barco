@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WorkPackageViewModel>
+
+@{
+    ViewData["Title"] = "Work Packages";
+}
+
+<div class="header">
+    <div class="header__block">
+        Work Packages
+    </div>
+    <div class="header__block--right">
+        <a asp-action="Create" class="icon__frame" title="Create New Package">
+            <i class="glyphicon glyphicon-plus"></i>
+        </a>
+    </div>
+</div>
+<hr />
+
+<div class="card-container">
+    @foreach (var item in Model)
+    {
+        <a class="card div-link" asp-action="Details" asp-route-id="@item.Id">
+            <div class="card__block">
+                <h2>@item.Name</h2>
+            </div>
+            <div class="card__block">
+                <div class="card--secondary">
+                    <div class="card__block">
+                        <div style="min-height:40px;">
+                            @item.Manager.Name
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card__block">
+                <h4>Outstanding Jobs</h4>
+                <div>
+                    <h3>@item.JobsOutstanding / @item.JobsTotal</h3>
+                </div>
+                <h4>Missed Jobs</h4>
+                <div>
+                    <h3>@item.JobsFailed</h3>
+                </div>
+            </div>
+        </a>
+    }
+</div>

@@ -1,0 +1,61 @@
+﻿@model WorkPackageViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="header">
+    <div class="header__block">
+        @Model.Name
+    </div>
+    <div class="header__block--right">
+        <a asp-action="Index" class="icon__frame">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+        </a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="icon__frame" title="Edit Work Package">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a asp-action="Fill" asp-route-id="@Model.Id" class="icon__frame" title="Fill Work Package Randomly">
+            <i class="glyphicon glyphicon-random"></i>
+        </a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="icon__frame" title="Delete Work Package">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+</div>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Manager)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Manager.Name)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobsTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobsTotal)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobsOutstanding)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobsOutstanding)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobsFailed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobsFailed)
+        </dd>
+    </dl>
+</div>

@@ -1,0 +1,45 @@
+﻿@model BarcoJobViewModel
+
+@{
+    ViewData["Title"] = "Delete Activity";
+}
+
+<div class="header">
+    <div class="header__block">
+        Delete Activity
+    </div>
+    <div class="header__block--right">
+        <a asp-action="Index" class="icon__frame">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+        </a>
+    </div>
+</div>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Date
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.Date) @Html.DisplayNameFor(model => model.MonthCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JobType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfFilledShifts)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfFilledShifts)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+    </form>
+</div>

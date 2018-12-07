@@ -1,0 +1,70 @@
+﻿@model BarcoJobViewModel
+
+@{
+    ViewData["Title"] = "Activity Details";
+}
+
+<div class="header">
+    <div class="header__block">
+        Activity Details
+    </div>
+    <div class="header__block--right">
+        <a asp-action="Index" class="icon__frame">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+        </a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="icon__frame" title="Edit Activity">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a asp-action="TakeShift" asp-route-id="@Model.Id" class="icon__frame" title="Take Shift">
+            <i class="glyphicon glyphicon-log-in"></i>
+        </a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="icon__frame" title="Delete Activity">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+        <a asp-action="Create" class="icon__frame" title="Create New Activity">
+            <i class="glyphicon glyphicon-plus"></i>
+        </a>
+    </div>
+</div>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Date
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.Date) @Html.DisplayNameFor(model => model.MonthCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OpeningTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OpeningTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ClosingTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClosingTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JobType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JobCapacity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobCapacity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfFilledShifts)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfFilledShifts)
+        </dd>
+    </dl>
+</div>

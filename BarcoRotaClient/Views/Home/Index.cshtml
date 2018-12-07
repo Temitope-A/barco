@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Authentication;
+@model IEnumerable<DaySummaryViewModel>
+
+@{
+    ViewData["Title"] = "Barco Home";
+}
+
+<!--@if (User.Identity.IsAuthenticated)
+{
+    <h2>
+        Logged-in user details:
+    </h2>
+    <div>
+
+    </div>
+    <dl>
+        @foreach (var claim in User.Claims)
+        {
+            <dt>@claim.Type</dt>
+            <dd>@claim.Value</dd>
+        }
+    </dl>
+}-->
+<div class="header">
+    <div class="header__block">
+        Barco Calendar - @Model.First().MonthCode
+    </div>
+</div>
+<hr />
+
+<div class="card-container">
+    @foreach (var day in Model)
+    {
+        var dayClass = "card--secondary card-thin";
+        if (!day.IsOpen)
+        {
+            dayClass = "card--disabled card-thin";
+        }
+        else if (!day.Shifts.Any())
+        {
+            dayClass = "card--tertiary card-thin";
+        }
+    <div class="@dayClass">
+        <div class="card__block--white card__block-thin">
+            <h5><strong>@day.Date</strong></h5>
+        </div>
+        <div class="card__block">
+            @if (!day.IsOpen)
+            {
+                <span>CLOSED</span>
+            }
+            else if (day.Shifts.Count == 0)
+            {
+                <em>No hosts have signed up yet</em>
+            }
+            else
+            {
+                foreach (var shift in day.Shifts)
+                {
+                    <span class="card__block">
+                        @shift.BarcoMember.Name
+                    </span>
+                }
+            }
+        </div>
+        <div class="card__block">
+            @if (day.IsOpen)
+            {
+                <span>@day.JobType</span>
+            }
+            else
+            {
+                <span>-</span>
+            }
+        </div>
+    </div>
+    }
+</div>

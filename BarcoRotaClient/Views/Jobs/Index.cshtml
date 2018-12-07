@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BarcoJobViewModel>
+
+@{
+    ViewData["Title"] = "Next Activities";
+}
+
+<div class="header">
+    <div class="header__block">
+        Next Activities
+    </div>
+    <div class="header__block--right">
+        <a asp-action="Create" class="icon__frame" title="Create New Activity">
+            <i class="glyphicon glyphicon-plus"></i>
+        </a>
+    </div>
+</div>
+<hr />
+
+<div class="card-container">
+    @foreach (var job in Model)
+    {
+        <a class="@(job.Shifts.Any() ? "card" : "card--tertiary") div-link" asp-action="Details" asp-route-id="@job.Id">
+            <div class="card__block--white">
+                <h1>
+                    @job.Date
+                </h1>
+                <h2>
+                    @job.MonthCode
+                </h2>
+            </div>
+            <div class="card__block">
+                @if(job.Shifts.Count == 0){
+                    <h3>No hosts have signed up yet</h3>
+                 }
+                @foreach (var shift in job.Shifts)
+                {
+                    <div class="card--secondary">
+                        <div class="card__block">
+                            <div style="min-height:40px;">
+                                @shift.BarcoMember.Name
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="card__block">
+                <h2>
+                    @Html.DisplayFor(modelItem => job.JobType)
+                </h2>
+                <h2>
+                    @job.NumberOfFilledShifts / @job.JobCapacity
+                </h2>
+                <h3>
+                    @job.OpeningTime - @job.ClosingTime
+                </h3>
+            </div>
+        </a>
+    }
+</div>

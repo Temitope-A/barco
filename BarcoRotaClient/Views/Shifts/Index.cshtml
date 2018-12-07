@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BarcoShiftViewModel>
+
+@{
+    ViewData["Title"] = "Shifts";
+}
+
+<div class="header">
+    <div class="header__block">
+        My Shifts
+    </div>
+</div>
+<hr />
+
+<div class="card-container">
+    @foreach (var shift in Model)
+    {
+    <div class="card">
+        <div class="card__block--white">
+            <h2 class="big-text">
+                @shift.Date
+            </h2>
+            <h3>
+                @shift.MonthCode
+            </h3>
+        </div>
+        <div class="card__block">
+            <div class="card--secondary">
+                <div class="card__block">
+                    <div style="min-height:40px;">
+                        @shift.BarcoMember.Name
+                    </div>
+                </div>
+            </div>
+            <h2>
+                @Html.DisplayFor(modelItem => shift.ShiftStatus)
+            </h2>
+        </div>
+        <div class="card__block">
+            <div style="padding:0px 40px 0px 40px; height:100%">
+                <div class="vertical-box">
+                    <a asp-action="Delete" class="icon__frame">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                    <a asp-action="Start" class="icon__frame">
+                        <i class="glyphicon glyphicon-cd"></i>
+                    </a>
+                    <a asp-action="Remind" class="icon__frame">
+                        <i class="glyphicon glyphicon-bell"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
